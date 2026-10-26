@@ -101,11 +101,11 @@ class _PrivacyGateState extends State<PrivacyGate>
   Future _toLockPage() async {
     if (!(_lockerRoute?.isActive ?? false)) {
       _lockerRoute = PageRouteBuilder(
-        pageBuilder: (ctx, _, __) => PrivacyLockWidget(
+        pageBuilder: (ctx, animation, _) => PrivacyLockWidget(
           blurColor: _blurColor,
           blurRadius: _blurRadius,
           backgroundColor: _backgroundColor,
-          animation: _,
+          animation: animation,
           lockBuilder: widget.lockBuilder,
         ),
         transitionDuration: Duration.zero,

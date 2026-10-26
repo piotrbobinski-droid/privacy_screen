@@ -4,7 +4,6 @@ version '1.0-SNAPSHOT'
 // AGP and Kotlin plugins are provided by the consuming app's root classpath.
 // This is the standard Flutter plugin pattern — no buildscript block needed.
 apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android'
 
 android {
     namespace 'ca.couver.privacy_screen'
@@ -19,12 +18,14 @@ android {
         targetCompatibility JavaVersion.VERSION_17
     }
 
-    kotlinOptions {
-        jvmTarget = '17'
-    }
-
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
+    }
+}
+
+kotlin {
+    compilerOptions {
+        jvmTarget = org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17
     }
 }
 
@@ -34,6 +35,6 @@ repositories {
 }
 
 dependencies {
-    // kotlin-stdlib is added automatically by the Kotlin Gradle plugin.
+    // kotlin-stdlib is added automatically by AGP's built-in Kotlin support.
     implementation 'androidx.lifecycle:lifecycle-process:2.8.4'
 }
